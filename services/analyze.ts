@@ -1,17 +1,7 @@
-export type AnalyzeMode =
-    | "auto"
-    | "word"
-    | "grammar"
-    | "sentence";
-
-export interface AnalyzeRequest {
-    text: string;
-    mode: AnalyzeMode;
-}
-
-export interface AnalyzeResponse {
-    result: string;
-}
+import type {
+    AnalyzeRequest,
+    AnalyzeResponse,
+} from "@/types/analyze";
 
 export async function analyze(
     request: AnalyzeRequest

@@ -7,29 +7,20 @@ import { zh } from "@/locales/zh";
 import { en } from "@/locales/en";
 import { vi } from "@/locales/vi";
 
-type AnalyzeMode =
-  | "auto"
-  | "word"
-  | "grammar"
-  | "sentence";
-
-type AnalyzeRequest = {
-  text: string;
-  mode: AnalyzeMode;
-};
 
 type Language =
   | "zh"
   | "en"
   | "vi";
 
-export type HistoryItem = {
-  id: string;
-  text: string;
-  mode: AnalyzeMode;
-  result: string;
-  createdAt: number;
-};
+import type {
+  AnalyzeMode,
+  AnalyzeRequest,
+} from "@/types/analyze";
+
+import type {
+  HistoryItem,
+} from "@/types/history";
 
 export default function AnalyzePage() {
   const [input, setInput] = useState("");
