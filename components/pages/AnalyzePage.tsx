@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { analyze } from "@/services/analyze";
 
 import { zh } from "@/locales/zh";
 import { en } from "@/locales/en";
@@ -66,22 +67,10 @@ export default function AnalyzePage() {
 
     try {
 
-      const requestBody: AnalyzeRequest = {
+      const data = await analyze({
         text: input,
-        mode: mode,
-      };
-
-      const response = await fetch("/api/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          requestBody
-        ),
+        mode,
       });
-
-      const data = await response.json();
 
       setResult(data.result);
 
