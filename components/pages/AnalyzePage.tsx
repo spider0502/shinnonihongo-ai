@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { analyze } from "@/services/analyze";
+import ReactMarkdown from "react-markdown";
 
 import { zh } from "@/locales/zh";
 import { en } from "@/locales/en";
@@ -175,8 +176,10 @@ export default function AnalyzePage() {
       </div>
 
       {result && (
-        <div className="mt-6 border rounded p-4 whitespace-pre-wrap">
-          {result}
+        <div className="mt-6 rounded-lg border p-6">
+          <ReactMarkdown>
+            {result}
+          </ReactMarkdown>
         </div>
       )}
 
