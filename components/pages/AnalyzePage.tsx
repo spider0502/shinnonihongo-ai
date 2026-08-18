@@ -56,6 +56,7 @@ export default function AnalyzePage() {
     }
 
     setLoading(true);
+    setResult("");
 
     try {
 
@@ -94,11 +95,17 @@ export default function AnalyzePage() {
         return newHistory;
       });
 
-    } catch {
-      setResult("发生错误");
-    }
+    } catch (error) {
+      console.error(error);
 
-    setLoading(false);
+      if (error instanceof Error) {
+        setResult(`发生错误：${error.message}`);
+      } else {
+        setResult("发生未知错误");
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

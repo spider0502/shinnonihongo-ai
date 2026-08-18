@@ -15,7 +15,11 @@ export async function analyze(
     });
 
     if (!response.ok) {
-        throw new Error("Analyze failed");
+        const data = await response.json().catch(() => null);
+
+        throw new Error(
+            data?.error || "Analyze failed"
+        );
     }
 
     return response.json();
